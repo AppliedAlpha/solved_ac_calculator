@@ -5,8 +5,20 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:solved_ac_calculator"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
+        Title="solved.ac Tier Calculator" Height="400" Width="640">
     <Grid>
-        
+        <TextBlock x:Name="title" Margin="140,13,0,0" TextWrapping="Wrap" Text="BOJ solved.ac Tier Calculator" VerticalAlignment="Top" FontSize="28" HorizontalAlignment="Left"/>
+        <Border x:Name="border" BorderThickness="0.5" BorderBrush="#FF7D7A7A" Width="120" Height="120" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="22,63,0,0">
+            <Image x:Name="tier_image" HorizontalAlignment="Left" Height="120" VerticalAlignment="Top" Width="120" OpacityMask="#FF99B4D1"/>
+        </Border>
+        <TextBlock x:Name="text1" HorizontalAlignment="Left" Margin="161,68,0,0" TextWrapping="Wrap" Text="Your Tier is" VerticalAlignment="Top" FontSize="20"/>
+        <TextBlock x:Name="tier" HorizontalAlignment="Left" Margin="270,68,0,0" TextWrapping="Wrap" Text="Unknown" VerticalAlignment="Top" FontSize="20" FontWeight="Bold"/>
+        <TextBlock x:Name="text2" HorizontalAlignment="Left" Margin="161,103,0,0" TextWrapping="Wrap" Text="Total EXP: " VerticalAlignment="Top" FontSize="16" FontWeight="Bold"/>
+        <TextBlock x:Name="total_exp" HorizontalAlignment="Left" Margin="243,103,0,0" TextWrapping="Wrap" Text="0" VerticalAlignment="Top" FontSize="16"/>
+        <TextBlock x:Name="text3" HorizontalAlignment="Left" Margin="161,129,0,0" TextWrapping="Wrap" Text="EXP: " VerticalAlignment="Top" FontSize="16" FontWeight="Bold"/>
+        <TextBlock x:Name="current_exp" HorizontalAlignment="Left" Margin="203,129,0,0" TextWrapping="Wrap" VerticalAlignment="Top" FontSize="16" Text="0.00% (0 / 0)"/>
+        <ProgressBar x:Name="exp_bar" HorizontalAlignment="Left" Height="15" Margin="161,159,0,0" VerticalAlignment="Top" Width="329"/>
+        <Button x:Name="execute" Content="Run" HorizontalAlignment="Left" Margin="507,156,0,0" VerticalAlignment="Top" Width="75"/>
+        <TextBox x:Name="text_input" HorizontalAlignment="Left" Height="159" Margin="22,192,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="591"/>
     </Grid>
 </Window>
