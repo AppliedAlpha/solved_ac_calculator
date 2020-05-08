@@ -13,7 +13,7 @@ namespace solved_ac_calculator
     {
         public WinHttp.WinHttpRequest req = null;
         public String[] solves = null;
-        public Tier tier = new Tier("Unknown", 0L, 1L);
+        public Tier tier = new Tier("Unknown", 0L, 1L, -1);
         public Int64 exp = 0L;
         public bool request_ok = false;
 
@@ -30,60 +30,62 @@ namespace solved_ac_calculator
         {
             public String name;
             public Int64 low, high;
+            public int lv;
 
-            public Tier(String name, Int64 low, Int64 high)
+            public Tier(String name, Int64 low, Int64 high, int lv)
             {
                 this.name = name;
                 this.low = low;
                 this.high = high;
+                this.lv = lv;
             }
         }
 
         public Tier[] _tier = new Tier[] {
-            new Tier("Bronze V", 0L, 9590L),
-            new Tier("Bronze IV", 9590L, 23030L),
-            new Tier("Bronze III", 23030L, 42110L),
-            new Tier("Bronze II", 42110L, 69590L),
-            new Tier("Bronze I", 69590L, 109430L),
-            new Tier("Silver V", 109430L, 182155L),
-            new Tier("Silver IV", 182155L, 289055L),
-            new Tier("Silver III", 289055L, 447280L),
-            new Tier("Silver II", 447280L, 683030L),
-            new Tier("Silver I", 683030L, 1036655L),
-            new Tier("Gold V", 1036655L, 1675295L),
-            new Tier("Gold IV", 1675295L, 2639645L),
-            new Tier("Gold III", 2639645L, 4100615L),
-            new Tier("Gold II", 4100615L, 6321305L),
-            new Tier("Gold I", 6321305L, 10836705L),
-            new Tier("Platinum V", 10836705L, 16018125L),
-            new Tier("Platinum IV", 16018125L, 23971635L),
-            new Tier("Platinum III", 23971635L, 36220035L),
-            new Tier("Platinum II", 36220035L, 55143795L),
-            new Tier("Platinum I", 55143795L, 84475605L),
-            new Tier("Diamond V", 84475605L, 130086585L),
-            new Tier("Diamond IV", 130086585L, 201244515L),
-            new Tier("Diamond III", 201244515L, 312599175L),
-            new Tier("Diamond II", 312599175L, 487425975L),
-            new Tier("Diamond I", 487425975L, 854562255L),
-            new Tier("Ruby V", 854562255L, 1434637575L),
-            new Tier("Ruby IV", 1434637575L, 2354056975L),
-            new Tier("Ruby III", 2354056975L, 3815933815L),
-            new Tier("Ruby II", 3815933815L, 6147627375L),
-            new Tier("Ruby I", 6147627375L, 999999999999L)
+            new Tier("Bronze V", 0L, 9590L, 1),
+            new Tier("Bronze IV", 9590L, 23030L, 2),
+            new Tier("Bronze III", 23030L, 42110L, 3),
+            new Tier("Bronze II", 42110L, 69590L, 4),
+            new Tier("Bronze I", 69590L, 109430L, 5),
+            new Tier("Silver V", 109430L, 182155L, 6),
+            new Tier("Silver IV", 182155L, 289055L, 7),
+            new Tier("Silver III", 289055L, 447280L, 8),
+            new Tier("Silver II", 447280L, 683030L, 9),
+            new Tier("Silver I", 683030L, 1036655L, 10),
+            new Tier("Gold V", 1036655L, 1675295L, 11),
+            new Tier("Gold IV", 1675295L, 2639645L, 12),
+            new Tier("Gold III", 2639645L, 4100615L, 13),
+            new Tier("Gold II", 4100615L, 6321305L, 14),
+            new Tier("Gold I", 6321305L, 10836705L, 15),
+            new Tier("Platinum V", 10836705L, 16018125L, 16),
+            new Tier("Platinum IV", 16018125L, 23971635L, 17),
+            new Tier("Platinum III", 23971635L, 36220035L, 18),
+            new Tier("Platinum II", 36220035L, 55143795L, 19),
+            new Tier("Platinum I", 55143795L, 84475605L, 20),
+            new Tier("Diamond V", 84475605L, 130086585L, 21),
+            new Tier("Diamond IV", 130086585L, 201244515L, 22),
+            new Tier("Diamond III", 201244515L, 312599175L, 23),
+            new Tier("Diamond II", 312599175L, 487425975L, 24),
+            new Tier("Diamond I", 487425975L, 854562255L, 25),
+            new Tier("Ruby V", 854562255L, 1434637575L, 26),
+            new Tier("Ruby IV", 1434637575L, 2354056975L, 27),
+            new Tier("Ruby III", 2354056975L, 3815933815L, 28),
+            new Tier("Ruby II", 3815933815L, 6147627375L, 29),
+            new Tier("Ruby I", 6147627375L, 999999999999L, 30)
         };
 
         public ProblemClient(TextBox text_input)
         {
             req = new WinHttpRequest();
             solves = text_input.Text.Split(' ');
-            tier = new Tier("Unknown", 0L, 1L);
+            tier = new Tier("Unknown", 0L, 1L, -1);
             exp = 0L;
             request_ok = false;
         }
 
-        public void request(ProgressBar request_bar)
+        public int request(ProgressBar request_bar)
         {
-            int i = 1;
+            int i = 1, cnt = 0;
             foreach (String solve in solves)
             {
                 request_bar.Value = i * 100 / solves.Length;
@@ -110,8 +112,10 @@ namespace solved_ac_calculator
                 }
                 else level = 0;
                 exp += diff[level];
+                if (diff[level] > 0) cnt++;
             }
             request_ok = true;
+            return cnt;
         }
 
         public void calculate()

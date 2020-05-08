@@ -8,8 +8,8 @@
         Title="solved.ac Tier Calculator" Height="440" Width="640">
     <Grid>
         <TextBlock x:Name="title" Margin="136,13,0,0" TextWrapping="Wrap" Text="BOJ solved.ac Tier Calculator" VerticalAlignment="Top" FontSize="28" HorizontalAlignment="Left"/>
-        <Border x:Name="border" BorderThickness="0.5" BorderBrush="#FF7D7A7A" Width="120" Height="120" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="18,57,0,0">
-            <Image x:Name="tier_image" HorizontalAlignment="Left" Height="120" VerticalAlignment="Top" Width="120" OpacityMask="#FF99B4D1"/>
+        <Border x:Name="border" BorderThickness="0.01" BorderBrush="#FF7D7A7A" Width="94" Height="120" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="35,57,0,0">
+            <Image x:Name="tier_image" HorizontalAlignment="Left" Height="120" VerticalAlignment="Top" Width="94" OpacityMask="#FF99B4D1"/>
         </Border>
         <TextBlock x:Name="text1" HorizontalAlignment="Left" Margin="157,62,0,0" TextWrapping="Wrap" Text="Your Tier is" VerticalAlignment="Top" FontSize="20"/>
         <TextBlock x:Name="tier" HorizontalAlignment="Left" Margin="266,62,0,0" TextWrapping="Wrap" Text="Unknown" VerticalAlignment="Top" FontSize="20" FontWeight="Bold"/>

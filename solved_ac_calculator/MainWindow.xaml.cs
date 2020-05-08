@@ -34,20 +34,17 @@ namespace solved_ac_calculator
                 if (!String.IsNullOrWhiteSpace(text_input.Text))
                 {
                     problemClient = new ProblemClient(text_input);
-                    problemClient.request(request_bar);
+                    int num = problemClient.request(request_bar);
                     problemClient.calculate();
 
                     Int64 exp = problemClient.exp;
                     Int64[] curr = { exp - problemClient.tier.low, problemClient.tier.high - problemClient.tier.low };
-                    String ti = problemClient.tier.name;
+                    String my_tier = problemClient.tier.name;
+                    int lv = problemClient.tier.lv;
                     int exp_rate = (int)(curr[0] * 10000 / curr[1]);
 
-                    if (ti.Contains("Bronze")) color_hex = "#ad5600";
-                    else if (ti.Contains("Silver")) color_hex = "#435f7a";
-                    else if (ti.Contains("Gold")) color_hex = "#ec9a00";
-                    else if (ti.Contains("Platinum")) color_hex = "#27e2a4";
-                    else if (ti.Contains("Diamond")) color_hex = "#00b4fc";
-                    else if (ti.Contains("Ruby")) color_hex = "#ff0062";
+                    String[] color_list = {"#000000", "#ad5600", "#435f7a", "#ec9a00", "#27e2a4", "#00b4fc", "#ff0062"};
+                    color_hex = color_list[(lv + 4) / 5];
 
                     Brush brush = (Brush)converter.ConvertFromString(color_hex);
                     Brush brush2 = (Brush)converter.ConvertFromString("#7F" + color_hex.Substring(1, 6));
@@ -58,11 +55,11 @@ namespace solved_ac_calculator
 
                     total_exp.Text = exp.ToString("N0");
                     current_exp.Text = $"{exp_rate / 100}.{exp_rate % 100}% ({curr[0].ToString("N0")} / {curr[1].ToString("N0")})";
-                    tier.Text = ti;
+                    tier.Text = my_tier;
                     exp_bar.Value = (double)exp_rate / 100;
                     exp_bar_bright.Value = (double)exp_rate / 100;
-                    // "https://static.solved.ac/tier_small/1.svg";
-                    MessageBox.Show("Successfully Calculated!");
+                    tier_image.Source = new BitmapImage(new Uri($@"image/{lv}.png", UriKind.Relative));
+                    MessageBox.Show($"Successfully Calculated!\nValid Problems Count: {num}", "solved.ac Tier Calculator");
                 }
                 else
                 {
