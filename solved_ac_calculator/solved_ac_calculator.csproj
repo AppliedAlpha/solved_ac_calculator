@@ -90,6 +90,8 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
+    <None Include="bin\Debug\solved_ac_calculator.exe.config" />
+    <None Include="bin\Debug\solved_ac_calculator.zip" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -143,6 +145,13 @@
     <Resource Include="image\7.png" />
     <Resource Include="image\8.png" />
     <Resource Include="image\9.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="bin\Debug\solved_ac_calculator.exe" />
+    <Content Include="bin\Debug\solved_ac_calculator.pdb" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="bin\Release\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

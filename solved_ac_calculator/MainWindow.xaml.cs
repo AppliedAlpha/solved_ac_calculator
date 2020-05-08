@@ -43,7 +43,7 @@ namespace solved_ac_calculator
                     int lv = problemClient.tier.lv;
                     int exp_rate = (int)(curr[0] * 10000 / curr[1]);
 
-                    String[] color_list = {"#000000", "#ad5600", "#435f7a", "#ec9a00", "#27e2a4", "#00b4fc", "#ff0062"};
+                    String[] color_list = { "#000000", "#ad5600", "#435f7a", "#ec9a00", "#27e2a4", "#00b4fc", "#ff0062" };
                     color_hex = color_list[(lv + 4) / 5];
 
                     Brush brush = (Brush)converter.ConvertFromString(color_hex);
@@ -65,7 +65,7 @@ namespace solved_ac_calculator
                 {
                     throw new ArgumentException("TextBox is Empty!");
                 }
-}
+            }
             catch (Exception ex)
             {
                 MessageBox.Show(ex.Message, "Error Occured");
